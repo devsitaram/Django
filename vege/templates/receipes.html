@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block start %}
+    
+    <div class="container mb-5">
+
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data"> <!-- post methods data send from frontent to backend and enctype can upload the folder data -->
+            {% csrf_token %}
+            <h2>Receipes Add</h2>
+            <hr>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Receipe name:</label>
+                <input name="receipe_name" required type="text" class="form-control">
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Receipe Description:</label>
+                <textarea class="form-control" required name="receipe_description"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Receipe Image:</label>
+                <input name="receipe_image" type="file" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-success">Add Receipes</button>
+
+        </form>
+    </div>
+
+{% endblock%}

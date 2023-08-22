@@ -42,8 +42,9 @@ INSTALLED_APPS = [
 # list of new create app
 EXTERNAL_APPS = [
     'account',
-    'home'
-]
+    'home',
+    'vege'
+] 
 
 # add the external app with internal app
 INSTALLED_APPS += EXTERNAL_APPS
