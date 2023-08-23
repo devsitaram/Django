@@ -7,25 +7,48 @@
             {% csrf_token %}
             <h2>Receipes Add</h2>
             <hr>
-
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Receipe name:</label>
                 <input name="receipe_name" required type="text" class="form-control">
             </div>
-            
+        
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Receipe Description:</label>
                 <textarea class="form-control" required name="receipe_description"></textarea>
             </div>
-
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Receipe Image:</label>
                 <input name="receipe_image" type="file" class="form-control">
             </div>
-
             <button type="submit" class="btn btn-success">Add Receipes</button>
-
         </form>
+
+        {{receipes}}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Receipes Name</th>
+                    <th scope="col">Receipes Descriptions</th>
+                    <th scope="col">Receipes Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receipe in receipes %}
+                <tr>
+                    <th scope="col">{{forloop.counter}}</th>
+                    <td>{{receipe.receipe_name}}</td>
+                    <td>{{receipe.receipe_description}}</td>
+                    <td>
+                        <img src="{{ receipe.receipe_image.url }}" alt="img">
+                        <!-- <img src="/media/{{receipe.receipe_image}}" style="height: 200px"/> -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
 
 {% endblock%}

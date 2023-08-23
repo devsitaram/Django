@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import*
 
 # Create your views here.
@@ -21,4 +21,9 @@ def receipes(request):
             receipe_image = image
         )
 
-    return render(request, 'receipes.html')
+        return redirect('/receipes/') # redirect again (redirect) go to the same page then not show the alert dialog box
+
+    queryset = Receipe.objects.all() # receipes data is add in the queryset variable
+    context = {'receipes':queryset} # data is add in conte
+
+    return render(request, 'receipes.html', context)
