@@ -22,16 +22,28 @@
             </div>
             <button type="submit" class="btn btn-success">Add Receipes</button>
         </form>
+        {% comment %} {{receipes}} {% endcomment %}
 
-        {{receipes}}
+        <div>
+            <div class="mx-auto col-6 mt-5">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Search Food</label>
+                        <input name="search" value="{{receipe.receipe_name}}" type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button><br></br>
+                </form>
+            </div>
+        </div>
 
-        <table class="table">
+        <table class="table mt-5">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">S. N</th>
                     <th scope="col">Receipes Name</th>
                     <th scope="col">Receipes Descriptions</th>
                     <th scope="col">Receipes Image</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,8 +53,12 @@
                     <td>{{receipe.receipe_name}}</td>
                     <td>{{receipe.receipe_description}}</td>
                     <td>
-                        <img src="{{ receipe.receipe_image.url }}" alt="img">
+                        <img src="{{ receipe.receipe_image.url }}" style="height: 100px" alt="img">
                         <!-- <img src="/media/{{receipe.receipe_image}}" style="height: 200px"/> -->
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_receipe' receipe.pk %}" class="btn btn-danger m-2">Delete</a>
+                        <a href="{% url 'update_receipe' receipe.pk %}" class="btn btn-success">Update</a>
                     </td>
                 </tr>
                 {% endfor %}
